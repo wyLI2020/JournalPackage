@@ -28,11 +28,11 @@ Rf_ZetaVarphiBeta_hat(tauseq = c(0.25, 0.75), K, N, T, W, Y, Ylag1, Z, X, Bnum, 
 - **K**:  integer, the number of quantile levels for $\widetilde{\beta}_{c}$ in WCQE
 - **N**:  integer, the number of spatial units
 - **T**:  integer, the number of time periods
-- **W**:  $N \times N$ matrix, the spatial weights matrix
-- **Y**:  $NT$-dimensional vector, response
-- **Ylag1**:  $NT$-dimensional vector, the first lag of response
-- **Z**:  $NT \times q$ matrix, time-varying regressors
-- **X**:  $N \times p$ matrix, time-invariant regressors
+- **W**:  (N, N) matrix, the spatial weights matrix
+- **Y**:  NT​-dimensional vector, response
+- **Ylag1**:  NT​-dimensional vector, the first lag of response
+- **Z**:  (NT, q​) matrix, time-varying regressors
+- **X**:  (N, p) matrix, time-invariant regressors
 - **Bnum**:  integer, the number of bootstrap samples
 - **clsnum**:  the number of copies of R running in parallel for bootstrap
 
