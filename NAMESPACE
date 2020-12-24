@@ -1,0 +1,6 @@
+useDynLib(QuantileDSAR, .registration=TRUE)
+importFrom(Rcpp, evalCpp)
+exportPattern("^[[:alpha:]]+")
+importFrom("stats", "optim")
+importFrom("quantreg", "rq")
+importFrom("parallel", "makeCluster", "parSapply", "stopCluster")

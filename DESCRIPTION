@@ -1,0 +1,11 @@
+Package: QuantileDSAR
+Type: Package
+Title: Estimation for the DSAR model
+Version: 1.0
+Date: 2020-12-21
+Author: Wenyu Li
+Maintainer: Wenyu Li <liwenyu_nk@163.com>
+Description: A hybrid two-stage estimation procedure for the DSAR model with random effect.
+License: GPL (>= 2)
+Imports: Rcpp (>= 1.0.5), quantreg
+LinkingTo: Rcpp, RcppArmadillo
