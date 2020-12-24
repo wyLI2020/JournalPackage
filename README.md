@@ -1,5 +1,4 @@
 # QuantileDSAR
 
 ## Installation
-Intro
-
+Introduction
