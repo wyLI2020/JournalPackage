@@ -61,7 +61,5 @@ X[,1] <- nGRP; X[,2] <- nIndustry2nd
 Rf_ZetaVarphiBeta_hat(tauseq = c(0.25, 0.75), K=9, N, T, W, Y, Ylag1, Z, X, Bnum=500, clsnum=6)
 ```
 
-## Development
 
-This R package is developed by Wenyu Li. 
 
