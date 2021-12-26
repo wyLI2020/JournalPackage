@@ -16,7 +16,7 @@
   
   \code{#install.packages("quantreg")}
   
-  \code{#install.packages("parallel")}
+  \code{#install.packages("nloptr")}
   
   \code{library(Rcpp)}
   
@@ -24,7 +24,7 @@
   
   \code{library(quantreg)}
   
-  \code{library(parallel)}
+  \code{library(nloptr)}
   
   \code{system("R CMD INSTALL --build QuantileDSAR_1.0.tar.gz")}
   

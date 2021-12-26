@@ -6,93 +6,20 @@
 
 using namespace Rcpp;
 
-// f_D_est
-arma::mat f_D_est(int N, arma::mat Xawith1, arma::vec beta_est);
-RcppExport SEXP _QuantileDSAR_f_D_est(SEXP NSEXP, SEXP Xawith1SEXP, SEXP beta_estSEXP) {
+// RCPPlnlOFdelta
+double RCPPlnlOFdelta(arma::vec delta, int N, int T, arma::mat W, arma::vec Y, arma::mat Ztilde, arma::mat Xawith1);
+RcppExport SEXP _QuantileDSAR_RCPPlnlOFdelta(SEXP deltaSEXP, SEXP NSEXP, SEXP TSEXP, SEXP WSEXP, SEXP YSEXP, SEXP ZtildeSEXP, SEXP Xawith1SEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< int >::type N(NSEXP);
-    Rcpp::traits::input_parameter< arma::mat >::type Xawith1(Xawith1SEXP);
-    Rcpp::traits::input_parameter< arma::vec >::type beta_est(beta_estSEXP);
-    rcpp_result_gen = Rcpp::wrap(f_D_est(N, Xawith1, beta_est));
-    return rcpp_result_gen;
-END_RCPP
-}
-// f_ASD_varphi
-arma::mat f_ASD_varphi(arma::vec tauseq, int N, arma::mat Xawith1, arma::vec varthetahat, arma::vec betactilde, arma::mat varphitauhatM, arma::mat Dtilde);
-RcppExport SEXP _QuantileDSAR_f_ASD_varphi(SEXP tauseqSEXP, SEXP NSEXP, SEXP Xawith1SEXP, SEXP varthetahatSEXP, SEXP betactildeSEXP, SEXP varphitauhatMSEXP, SEXP DtildeSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< arma::vec >::type tauseq(tauseqSEXP);
-    Rcpp::traits::input_parameter< int >::type N(NSEXP);
-    Rcpp::traits::input_parameter< arma::mat >::type Xawith1(Xawith1SEXP);
-    Rcpp::traits::input_parameter< arma::vec >::type varthetahat(varthetahatSEXP);
-    Rcpp::traits::input_parameter< arma::vec >::type betactilde(betactildeSEXP);
-    Rcpp::traits::input_parameter< arma::mat >::type varphitauhatM(varphitauhatMSEXP);
-    Rcpp::traits::input_parameter< arma::mat >::type Dtilde(DtildeSEXP);
-    rcpp_result_gen = Rcpp::wrap(f_ASD_varphi(tauseq, N, Xawith1, varthetahat, betactilde, varphitauhatM, Dtilde));
-    return rcpp_result_gen;
-END_RCPP
-}
-// f_ASD_beta
-arma::vec f_ASD_beta(arma::vec tauK, int N, int T, arma::mat Xawith1, arma::vec varthetahat, arma::vec betahat, arma::mat varphitauKhatM, arma::mat Dhat);
-RcppExport SEXP _QuantileDSAR_f_ASD_beta(SEXP tauKSEXP, SEXP NSEXP, SEXP TSEXP, SEXP Xawith1SEXP, SEXP varthetahatSEXP, SEXP betahatSEXP, SEXP varphitauKhatMSEXP, SEXP DhatSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< arma::vec >::type tauK(tauKSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type delta(deltaSEXP);
     Rcpp::traits::input_parameter< int >::type N(NSEXP);
     Rcpp::traits::input_parameter< int >::type T(TSEXP);
-    Rcpp::traits::input_parameter< arma::mat >::type Xawith1(Xawith1SEXP);
-    Rcpp::traits::input_parameter< arma::vec >::type varthetahat(varthetahatSEXP);
-    Rcpp::traits::input_parameter< arma::vec >::type betahat(betahatSEXP);
-    Rcpp::traits::input_parameter< arma::mat >::type varphitauKhatM(varphitauKhatMSEXP);
-    Rcpp::traits::input_parameter< arma::mat >::type Dhat(DhatSEXP);
-    rcpp_result_gen = Rcpp::wrap(f_ASD_beta(tauK, N, T, Xawith1, varthetahat, betahat, varphitauKhatM, Dhat));
-    return rcpp_result_gen;
-END_RCPP
-}
-// f_score_b
-arma::vec f_score_b(int b, arma::vec indicatorb, int N, int T, int p, int q, arma::mat W, arma::vec Y, arma::mat Ztilde, arma::mat Xawith1, arma::vec zetahat);
-RcppExport SEXP _QuantileDSAR_f_score_b(SEXP bSEXP, SEXP indicatorbSEXP, SEXP NSEXP, SEXP TSEXP, SEXP pSEXP, SEXP qSEXP, SEXP WSEXP, SEXP YSEXP, SEXP ZtildeSEXP, SEXP Xawith1SEXP, SEXP zetahatSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< int >::type b(bSEXP);
-    Rcpp::traits::input_parameter< arma::vec >::type indicatorb(indicatorbSEXP);
-    Rcpp::traits::input_parameter< int >::type N(NSEXP);
-    Rcpp::traits::input_parameter< int >::type T(TSEXP);
-    Rcpp::traits::input_parameter< int >::type p(pSEXP);
-    Rcpp::traits::input_parameter< int >::type q(qSEXP);
     Rcpp::traits::input_parameter< arma::mat >::type W(WSEXP);
     Rcpp::traits::input_parameter< arma::vec >::type Y(YSEXP);
     Rcpp::traits::input_parameter< arma::mat >::type Ztilde(ZtildeSEXP);
     Rcpp::traits::input_parameter< arma::mat >::type Xawith1(Xawith1SEXP);
-    Rcpp::traits::input_parameter< arma::vec >::type zetahat(zetahatSEXP);
-    rcpp_result_gen = Rcpp::wrap(f_score_b(b, indicatorb, N, T, p, q, W, Y, Ztilde, Xawith1, zetahat));
-    return rcpp_result_gen;
-END_RCPP
-}
-// f_ASD_zeta
-arma::vec f_ASD_zeta(int Bnum, arma::mat scoreBnum, int N, int T, int p, int q, arma::mat W, arma::vec Y, arma::mat Ztilde, arma::mat Xawith1, arma::vec zetahat);
-RcppExport SEXP _QuantileDSAR_f_ASD_zeta(SEXP BnumSEXP, SEXP scoreBnumSEXP, SEXP NSEXP, SEXP TSEXP, SEXP pSEXP, SEXP qSEXP, SEXP WSEXP, SEXP YSEXP, SEXP ZtildeSEXP, SEXP Xawith1SEXP, SEXP zetahatSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< int >::type Bnum(BnumSEXP);
-    Rcpp::traits::input_parameter< arma::mat >::type scoreBnum(scoreBnumSEXP);
-    Rcpp::traits::input_parameter< int >::type N(NSEXP);
-    Rcpp::traits::input_parameter< int >::type T(TSEXP);
-    Rcpp::traits::input_parameter< int >::type p(pSEXP);
-    Rcpp::traits::input_parameter< int >::type q(qSEXP);
-    Rcpp::traits::input_parameter< arma::mat >::type W(WSEXP);
-    Rcpp::traits::input_parameter< arma::vec >::type Y(YSEXP);
-    Rcpp::traits::input_parameter< arma::mat >::type Ztilde(ZtildeSEXP);
-    Rcpp::traits::input_parameter< arma::mat >::type Xawith1(Xawith1SEXP);
-    Rcpp::traits::input_parameter< arma::vec >::type zetahat(zetahatSEXP);
-    rcpp_result_gen = Rcpp::wrap(f_ASD_zeta(Bnum, scoreBnum, N, T, p, q, W, Y, Ztilde, Xawith1, zetahat));
+    rcpp_result_gen = Rcpp::wrap(RCPPlnlOFdelta(delta, N, T, W, Y, Ztilde, Xawith1));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -113,9 +40,65 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// f_vartheta_hat
-arma::vec f_vartheta_hat(arma::vec zetahat, int N, int T, arma::mat W, arma::vec Y, arma::mat Ztilde);
-RcppExport SEXP _QuantileDSAR_f_vartheta_hat(SEXP zetahatSEXP, SEXP NSEXP, SEXP TSEXP, SEXP WSEXP, SEXP YSEXP, SEXP ZtildeSEXP) {
+// f_score_b
+arma::vec f_score_b(arma::vec indicatorb, int N, int T, int p, int q, arma::mat W, arma::vec Y, arma::mat Ztilde, arma::mat Xawith1, arma::vec zetahat, arma::vec Vhat);
+RcppExport SEXP _QuantileDSAR_f_score_b(SEXP indicatorbSEXP, SEXP NSEXP, SEXP TSEXP, SEXP pSEXP, SEXP qSEXP, SEXP WSEXP, SEXP YSEXP, SEXP ZtildeSEXP, SEXP Xawith1SEXP, SEXP zetahatSEXP, SEXP VhatSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::vec >::type indicatorb(indicatorbSEXP);
+    Rcpp::traits::input_parameter< int >::type N(NSEXP);
+    Rcpp::traits::input_parameter< int >::type T(TSEXP);
+    Rcpp::traits::input_parameter< int >::type p(pSEXP);
+    Rcpp::traits::input_parameter< int >::type q(qSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type W(WSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type Y(YSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type Ztilde(ZtildeSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type Xawith1(Xawith1SEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type zetahat(zetahatSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type Vhat(VhatSEXP);
+    rcpp_result_gen = Rcpp::wrap(f_score_b(indicatorb, N, T, p, q, W, Y, Ztilde, Xawith1, zetahat, Vhat));
+    return rcpp_result_gen;
+END_RCPP
+}
+// f_CovM_QMLE
+arma::mat f_CovM_QMLE(int Bnum, int N, int T, int p, int q, arma::mat W, arma::vec Y, arma::mat Ztilde, arma::mat Xawith1, arma::vec zetahat, arma::vec Vhat);
+RcppExport SEXP _QuantileDSAR_f_CovM_QMLE(SEXP BnumSEXP, SEXP NSEXP, SEXP TSEXP, SEXP pSEXP, SEXP qSEXP, SEXP WSEXP, SEXP YSEXP, SEXP ZtildeSEXP, SEXP Xawith1SEXP, SEXP zetahatSEXP, SEXP VhatSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< int >::type Bnum(BnumSEXP);
+    Rcpp::traits::input_parameter< int >::type N(NSEXP);
+    Rcpp::traits::input_parameter< int >::type T(TSEXP);
+    Rcpp::traits::input_parameter< int >::type p(pSEXP);
+    Rcpp::traits::input_parameter< int >::type q(qSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type W(WSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type Y(YSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type Ztilde(ZtildeSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type Xawith1(Xawith1SEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type zetahat(zetahatSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type Vhat(VhatSEXP);
+    rcpp_result_gen = Rcpp::wrap(f_CovM_QMLE(Bnum, N, T, p, q, W, Y, Ztilde, Xawith1, zetahat, Vhat));
+    return rcpp_result_gen;
+END_RCPP
+}
+// f_CovM_secbetacheck
+arma::mat f_CovM_secbetacheck(int p, int q, arma::vec zetahat, arma::mat CovMzetahat);
+RcppExport SEXP _QuantileDSAR_f_CovM_secbetacheck(SEXP pSEXP, SEXP qSEXP, SEXP zetahatSEXP, SEXP CovMzetahatSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< int >::type p(pSEXP);
+    Rcpp::traits::input_parameter< int >::type q(qSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type zetahat(zetahatSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type CovMzetahat(CovMzetahatSEXP);
+    rcpp_result_gen = Rcpp::wrap(f_CovM_secbetacheck(p, q, zetahat, CovMzetahat));
+    return rcpp_result_gen;
+END_RCPP
+}
+// f_V_hat
+arma::vec f_V_hat(arma::vec zetahat, int N, int T, arma::mat W, arma::vec Y, arma::mat Ztilde);
+RcppExport SEXP _QuantileDSAR_f_V_hat(SEXP zetahatSEXP, SEXP NSEXP, SEXP TSEXP, SEXP WSEXP, SEXP YSEXP, SEXP ZtildeSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -125,7 +108,70 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< arma::mat >::type W(WSEXP);
     Rcpp::traits::input_parameter< arma::vec >::type Y(YSEXP);
     Rcpp::traits::input_parameter< arma::mat >::type Ztilde(ZtildeSEXP);
-    rcpp_result_gen = Rcpp::wrap(f_vartheta_hat(zetahat, N, T, W, Y, Ztilde));
+    rcpp_result_gen = Rcpp::wrap(f_V_hat(zetahat, N, T, W, Y, Ztilde));
+    return rcpp_result_gen;
+END_RCPP
+}
+// f_vartheta_hat
+arma::vec f_vartheta_hat(arma::vec Vhat, int N, int T);
+RcppExport SEXP _QuantileDSAR_f_vartheta_hat(SEXP VhatSEXP, SEXP NSEXP, SEXP TSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::vec >::type Vhat(VhatSEXP);
+    Rcpp::traits::input_parameter< int >::type N(NSEXP);
+    Rcpp::traits::input_parameter< int >::type T(TSEXP);
+    rcpp_result_gen = Rcpp::wrap(f_vartheta_hat(Vhat, N, T));
+    return rcpp_result_gen;
+END_RCPP
+}
+// wqrLF
+double wqrLF(arma::vec varphi, int N, arma::vec y, arma::mat xwith1, double tau, arma::vec weights);
+RcppExport SEXP _QuantileDSAR_wqrLF(SEXP varphiSEXP, SEXP NSEXP, SEXP ySEXP, SEXP xwith1SEXP, SEXP tauSEXP, SEXP weightsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::vec >::type varphi(varphiSEXP);
+    Rcpp::traits::input_parameter< int >::type N(NSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type y(ySEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type xwith1(xwith1SEXP);
+    Rcpp::traits::input_parameter< double >::type tau(tauSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type weights(weightsSEXP);
+    rcpp_result_gen = Rcpp::wrap(wqrLF(varphi, N, y, xwith1, tau, weights));
+    return rcpp_result_gen;
+END_RCPP
+}
+// gr_wqrLF
+arma::vec gr_wqrLF(arma::vec varphi, int N, arma::vec y, arma::mat xwith1, double tau, arma::vec weights);
+RcppExport SEXP _QuantileDSAR_gr_wqrLF(SEXP varphiSEXP, SEXP NSEXP, SEXP ySEXP, SEXP xwith1SEXP, SEXP tauSEXP, SEXP weightsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::vec >::type varphi(varphiSEXP);
+    Rcpp::traits::input_parameter< int >::type N(NSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type y(ySEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type xwith1(xwith1SEXP);
+    Rcpp::traits::input_parameter< double >::type tau(tauSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type weights(weightsSEXP);
+    rcpp_result_gen = Rcpp::wrap(gr_wqrLF(varphi, N, y, xwith1, tau, weights));
+    return rcpp_result_gen;
+END_RCPP
+}
+// f_WCQE_tausM
+arma::mat f_WCQE_tausM(int p, int N, arma::vec y, arma::mat x, arma::mat xwith1, int tausNUM, arma::vec tausV, arma::vec weightsV);
+RcppExport SEXP _QuantileDSAR_f_WCQE_tausM(SEXP pSEXP, SEXP NSEXP, SEXP ySEXP, SEXP xSEXP, SEXP xwith1SEXP, SEXP tausNUMSEXP, SEXP tausVSEXP, SEXP weightsVSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< int >::type p(pSEXP);
+    Rcpp::traits::input_parameter< int >::type N(NSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type y(ySEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type x(xSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type xwith1(xwith1SEXP);
+    Rcpp::traits::input_parameter< int >::type tausNUM(tausNUMSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type tausV(tausVSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type weightsV(weightsVSEXP);
+    rcpp_result_gen = Rcpp::wrap(f_WCQE_tausM(p, N, y, x, xwith1, tausNUM, tausV, weightsV));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -153,69 +199,124 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// wqrLF
-double wqrLF(arma::vec varphi, int N, arma::vec y, arma::mat x, double tau, arma::vec weights);
-RcppExport SEXP _QuantileDSAR_wqrLF(SEXP varphiSEXP, SEXP NSEXP, SEXP ySEXP, SEXP xSEXP, SEXP tauSEXP, SEXP weightsSEXP) {
+// f_eta_est
+arma::vec f_eta_est(int N, arma::mat Xawith1, arma::vec varthetahat, arma::vec betaest);
+RcppExport SEXP _QuantileDSAR_f_eta_est(SEXP NSEXP, SEXP Xawith1SEXP, SEXP varthetahatSEXP, SEXP betaestSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< arma::vec >::type varphi(varphiSEXP);
     Rcpp::traits::input_parameter< int >::type N(NSEXP);
-    Rcpp::traits::input_parameter< arma::vec >::type y(ySEXP);
-    Rcpp::traits::input_parameter< arma::mat >::type x(xSEXP);
-    Rcpp::traits::input_parameter< double >::type tau(tauSEXP);
-    Rcpp::traits::input_parameter< arma::vec >::type weights(weightsSEXP);
-    rcpp_result_gen = Rcpp::wrap(wqrLF(varphi, N, y, x, tau, weights));
+    Rcpp::traits::input_parameter< arma::mat >::type Xawith1(Xawith1SEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type varthetahat(varthetahatSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type betaest(betaestSEXP);
+    rcpp_result_gen = Rcpp::wrap(f_eta_est(N, Xawith1, varthetahat, betaest));
     return rcpp_result_gen;
 END_RCPP
 }
-// f_beta_hat
-arma::vec f_beta_hat(arma::vec tauK, int N, arma::mat Xawith1, arma::vec varthetahat, arma::vec betactilde, arma::mat varphitauKhatM);
-RcppExport SEXP _QuantileDSAR_f_beta_hat(SEXP tauKSEXP, SEXP NSEXP, SEXP Xawith1SEXP, SEXP varthetahatSEXP, SEXP betactildeSEXP, SEXP varphitauKhatMSEXP) {
+// f_feta_tildeV
+arma::vec f_feta_tildeV(arma::vec xV, int N, arma::mat Xawith1, arma::vec varthetahat, arma::vec betactilde);
+RcppExport SEXP _QuantileDSAR_f_feta_tildeV(SEXP xVSEXP, SEXP NSEXP, SEXP Xawith1SEXP, SEXP varthetahatSEXP, SEXP betactildeSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< arma::vec >::type tauK(tauKSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type xV(xVSEXP);
     Rcpp::traits::input_parameter< int >::type N(NSEXP);
     Rcpp::traits::input_parameter< arma::mat >::type Xawith1(Xawith1SEXP);
     Rcpp::traits::input_parameter< arma::vec >::type varthetahat(varthetahatSEXP);
     Rcpp::traits::input_parameter< arma::vec >::type betactilde(betactildeSEXP);
-    Rcpp::traits::input_parameter< arma::mat >::type varphitauKhatM(varphitauKhatMSEXP);
-    rcpp_result_gen = Rcpp::wrap(f_beta_hat(tauK, N, Xawith1, varthetahat, betactilde, varphitauKhatM));
+    rcpp_result_gen = Rcpp::wrap(f_feta_tildeV(xV, N, Xawith1, varthetahat, betactilde));
     return rcpp_result_gen;
 END_RCPP
 }
-// RCPPlnlOFdelta
-double RCPPlnlOFdelta(arma::vec delta, int N, int T, arma::mat W, arma::vec Y, arma::mat Ztilde, arma::mat Xawith1);
-RcppExport SEXP _QuantileDSAR_RCPPlnlOFdelta(SEXP deltaSEXP, SEXP NSEXP, SEXP TSEXP, SEXP WSEXP, SEXP YSEXP, SEXP ZtildeSEXP, SEXP Xawith1SEXP) {
+// f_D_est
+arma::mat f_D_est(int N, arma::mat Xawith1, arma::vec betaest);
+RcppExport SEXP _QuantileDSAR_f_D_est(SEXP NSEXP, SEXP Xawith1SEXP, SEXP betaestSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< arma::vec >::type delta(deltaSEXP);
     Rcpp::traits::input_parameter< int >::type N(NSEXP);
-    Rcpp::traits::input_parameter< int >::type T(TSEXP);
-    Rcpp::traits::input_parameter< arma::mat >::type W(WSEXP);
-    Rcpp::traits::input_parameter< arma::vec >::type Y(YSEXP);
-    Rcpp::traits::input_parameter< arma::mat >::type Ztilde(ZtildeSEXP);
     Rcpp::traits::input_parameter< arma::mat >::type Xawith1(Xawith1SEXP);
-    rcpp_result_gen = Rcpp::wrap(RCPPlnlOFdelta(delta, N, T, W, Y, Ztilde, Xawith1));
+    Rcpp::traits::input_parameter< arma::vec >::type betaest(betaestSEXP);
+    rcpp_result_gen = Rcpp::wrap(f_D_est(N, Xawith1, betaest));
+    return rcpp_result_gen;
+END_RCPP
+}
+// f_ASD_WCQE
+arma::mat f_ASD_WCQE(arma::vec tauseq, arma::vec XitauseqtildeV, arma::mat Dtilde, int N, int p);
+RcppExport SEXP _QuantileDSAR_f_ASD_WCQE(SEXP tauseqSEXP, SEXP XitauseqtildeVSEXP, SEXP DtildeSEXP, SEXP NSEXP, SEXP pSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::vec >::type tauseq(tauseqSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type XitauseqtildeV(XitauseqtildeVSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type Dtilde(DtildeSEXP);
+    Rcpp::traits::input_parameter< int >::type N(NSEXP);
+    Rcpp::traits::input_parameter< int >::type p(pSEXP);
+    rcpp_result_gen = Rcpp::wrap(f_ASD_WCQE(tauseq, XitauseqtildeV, Dtilde, N, p));
+    return rcpp_result_gen;
+END_RCPP
+}
+// f_H_est
+arma::mat f_H_est(int K, arma::vec tauK, arma::vec XitauKestV);
+RcppExport SEXP _QuantileDSAR_f_H_est(SEXP KSEXP, SEXP tauKSEXP, SEXP XitauKestVSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< int >::type K(KSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type tauK(tauKSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type XitauKestV(XitauKestVSEXP);
+    rcpp_result_gen = Rcpp::wrap(f_H_est(K, tauK, XitauKestV));
+    return rcpp_result_gen;
+END_RCPP
+}
+// f_WQAE
+arma::vec f_WQAE(arma::mat varphitauKhatM, arma::vec qest, arma::mat Hest);
+RcppExport SEXP _QuantileDSAR_f_WQAE(SEXP varphitauKhatMSEXP, SEXP qestSEXP, SEXP HestSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat >::type varphitauKhatM(varphitauKhatMSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type qest(qestSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type Hest(HestSEXP);
+    rcpp_result_gen = Rcpp::wrap(f_WQAE(varphitauKhatM, qest, Hest));
+    return rcpp_result_gen;
+END_RCPP
+}
+// f_ASD_WQAE
+arma::vec f_ASD_WQAE(int N, arma::vec qest, arma::mat Hest, arma::mat Dhat);
+RcppExport SEXP _QuantileDSAR_f_ASD_WQAE(SEXP NSEXP, SEXP qestSEXP, SEXP HestSEXP, SEXP DhatSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< int >::type N(NSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type qest(qestSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type Hest(HestSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type Dhat(DhatSEXP);
+    rcpp_result_gen = Rcpp::wrap(f_ASD_WQAE(N, qest, Hest, Dhat));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_QuantileDSAR_f_D_est", (DL_FUNC) &_QuantileDSAR_f_D_est, 3},
-    {"_QuantileDSAR_f_ASD_varphi", (DL_FUNC) &_QuantileDSAR_f_ASD_varphi, 7},
-    {"_QuantileDSAR_f_ASD_beta", (DL_FUNC) &_QuantileDSAR_f_ASD_beta, 8},
-    {"_QuantileDSAR_f_score_b", (DL_FUNC) &_QuantileDSAR_f_score_b, 11},
-    {"_QuantileDSAR_f_ASD_zeta", (DL_FUNC) &_QuantileDSAR_f_ASD_zeta, 11},
+    {"_QuantileDSAR_RCPPlnlOFdelta", (DL_FUNC) &_QuantileDSAR_RCPPlnlOFdelta, 7},
     {"_QuantileDSAR_f_zeta_hat", (DL_FUNC) &_QuantileDSAR_f_zeta_hat, 7},
-    {"_QuantileDSAR_f_vartheta_hat", (DL_FUNC) &_QuantileDSAR_f_vartheta_hat, 6},
+    {"_QuantileDSAR_f_score_b", (DL_FUNC) &_QuantileDSAR_f_score_b, 11},
+    {"_QuantileDSAR_f_CovM_QMLE", (DL_FUNC) &_QuantileDSAR_f_CovM_QMLE, 11},
+    {"_QuantileDSAR_f_CovM_secbetacheck", (DL_FUNC) &_QuantileDSAR_f_CovM_secbetacheck, 4},
+    {"_QuantileDSAR_f_V_hat", (DL_FUNC) &_QuantileDSAR_f_V_hat, 6},
+    {"_QuantileDSAR_f_vartheta_hat", (DL_FUNC) &_QuantileDSAR_f_vartheta_hat, 3},
+    {"_QuantileDSAR_wqrLF", (DL_FUNC) &_QuantileDSAR_wqrLF, 6},
+    {"_QuantileDSAR_gr_wqrLF", (DL_FUNC) &_QuantileDSAR_gr_wqrLF, 6},
+    {"_QuantileDSAR_f_WCQE_tausM", (DL_FUNC) &_QuantileDSAR_f_WCQE_tausM, 8},
     {"_QuantileDSAR_f_betac_tilde", (DL_FUNC) &_QuantileDSAR_f_betac_tilde, 1},
     {"_QuantileDSAR_f_weights_rq", (DL_FUNC) &_QuantileDSAR_f_weights_rq, 3},
-    {"_QuantileDSAR_wqrLF", (DL_FUNC) &_QuantileDSAR_wqrLF, 6},
-    {"_QuantileDSAR_f_beta_hat", (DL_FUNC) &_QuantileDSAR_f_beta_hat, 6},
-    {"_QuantileDSAR_RCPPlnlOFdelta", (DL_FUNC) &_QuantileDSAR_RCPPlnlOFdelta, 7},
+    {"_QuantileDSAR_f_eta_est", (DL_FUNC) &_QuantileDSAR_f_eta_est, 4},
+    {"_QuantileDSAR_f_feta_tildeV", (DL_FUNC) &_QuantileDSAR_f_feta_tildeV, 5},
+    {"_QuantileDSAR_f_D_est", (DL_FUNC) &_QuantileDSAR_f_D_est, 3},
+    {"_QuantileDSAR_f_ASD_WCQE", (DL_FUNC) &_QuantileDSAR_f_ASD_WCQE, 5},
+    {"_QuantileDSAR_f_H_est", (DL_FUNC) &_QuantileDSAR_f_H_est, 3},
+    {"_QuantileDSAR_f_WQAE", (DL_FUNC) &_QuantileDSAR_f_WQAE, 3},
+    {"_QuantileDSAR_f_ASD_WQAE", (DL_FUNC) &_QuantileDSAR_f_ASD_WQAE, 4},
     {NULL, NULL, 0}
 };
 
