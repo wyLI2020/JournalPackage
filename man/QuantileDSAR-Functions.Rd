@@ -32,7 +32,7 @@
   Rf_ZetaVarphiBetaASD_hat(tauseq, N, T, W, Y, Ylag1, Z, X, K, tauK, Bnum)
 }
 \arguments{
-  \item{tauseq}{vector, the quantiles to be estimated, default = "c(0.25, 0.75)"}
+  \item{tauseq}{vector, the quantiles to be estimated}
   \item{N}{integer, the number of spatial units}
   \item{T}{integer, the number of time periods}
   \item{W}{(\emph{N}, \emph{N}) matrix, the spatial weights matrix}
